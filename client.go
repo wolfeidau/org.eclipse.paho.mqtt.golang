@@ -17,10 +17,11 @@ package mqtt
 
 import (
 	"errors"
-	. "github.com/alsm/hrotti/packets"
 	"net"
 	"sync"
 	"time"
+
+	. "github.com/alsm/hrotti/packets"
 )
 
 type Client interface {
@@ -466,10 +467,4 @@ func (c *MqttClient) Unsubscribe(topics ...string) Token {
 
 	DEBUG.Println(CLI, "exit Unsubscribe")
 	return token
-}
-
-func (c *MqttClient) State() byte {
-	c.RLock()
-	defer c.RUnlock()
-	return c.state
 }
